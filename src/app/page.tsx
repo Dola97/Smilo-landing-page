@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { Test } from "@/components/client/test";
+import { HeroSection } from "@/components/server/hero-section";
 
 export default function Home() {
   return (
-    <h1 className="text-4xl 2xl:text-6xl text-blue font-xbold">
-      Entrust your smile to professional
-    </h1>
+    <>
+      <HeroSection />
+      <Test />
+    </>
   );
 }

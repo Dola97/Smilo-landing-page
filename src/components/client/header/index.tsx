@@ -64,8 +64,8 @@ export const Header = () => {
         leaveFrom="translate-y-0 opacity-100 sm:scale-100"
         leaveTo="translate-y-2 opacity-0 sm:translate-y-0 sm:scale-95"
       >
-        <div className="lg:hidde" id="mobile-menu">
-          <div className=" flex flex-row justify-center items-center px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="lg:hidden" id="mobile-menu">
+          <div className=" flex flex-col justify-center items-center px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {Routes.map((item) => (
               <nav key={item.name}>
                 <Link
