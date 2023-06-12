@@ -3,6 +3,7 @@
 import { CancelIcon } from "@/assest/svgs/cancel";
 import { HamburgurIcon } from "@/assest/svgs/hamburger";
 import { LogoIcon } from "@/assest/svgs/logo";
+import { usePathname } from "next/navigation";
 import { Routes } from "@/constants/routes";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
@@ -10,6 +11,8 @@ import { useState } from "react";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
     <header className="">
       <nav
@@ -33,23 +36,34 @@ export const Header = () => {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {Routes.map((item) => (
-            <nav key={item.name}>
-              <Link
-                href={item.to}
-                className=" text-sm font-bold leading-6 text-blue"
+          {Routes.map((route) => {
+            const samePath = pathname === route.to;
+            return (
+              <nav
+                className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300  relative"
+                key={route.name}
               >
-                {item.name}
-              </Link>
-            </nav>
-          ))}
+                <Link
+                  href={route.to}
+                  className={`text-sm font-bold leading-6 text-blue ${
+                    samePath ? " underline" : "no-underline"
+                  }`}
+                >
+                  {route.name}
+                </Link>
+              </nav>
+            );
+          })}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <button
-            disabled
-            className="disabled:opacity-25 bg-indigo p-3 text-sm font-bold text-gray-light-100 rounded-sm"
+            type="button"
+            className="relative bg-indigo py-1  sm:py-3 px-2 sm:px-10  rounded-xl overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg"
           >
-            Book appointment soon!
+            <span className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-20"></span>
+            <span className="relative z-10 text-sm font-bold text-white-app">
+              Book appointment
+            </span>
           </button>
         </div>
       </nav>
