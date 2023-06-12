@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
-export const Test = () => {
+export const HeroText = () => {
   return (
     <motion.section
       initial={{ opacity: 0, scale: 0.5 }}

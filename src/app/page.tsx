@@ -1,11 +1,11 @@
-import { Test } from "@/components/client/test";
+import { HeroText } from "@/components/client/hero-text";
 import { HeroSection } from "@/components/server/hero-section";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <Test />
+      <HeroText />
     </>
   );
 }
